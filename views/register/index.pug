@@ -1,0 +1,45 @@
+extends ../layout/baselogin 
+block content 
+    .login-box 
+      .login-logo 
+        a(href='#') 
+          b Daily Programming 
+      // /.login-logo 
+      .login-box-body 
+        p.login-box-msg Silakan Registrasi 
+        form(action='#' method='post') 
+          label Username 
+          .form-group.has-feedback 
+            input.form-control(type="text" name="username" id="username" autocomplete="off" placeholder="Isi Username") 
+            span.glyphicon.glyphicon-user.form-control-feedback 
+          label Nama Depan 
+          .form-group.has-feedback 
+            input.form-control(type="text" name="first_name" id="first_name" autocomplete="off" placeholder="Isi Nama Depan") 
+            span.glyphicon.glyphicon-user.form-control-feedback 
+          label Nama Balakang 
+          .form-group.has-feedback 
+            input.form-control(type="text" name="last_name" id="last_name" autocomplete="off" placeholder="Isi Nama Belakang") 
+            span.glyphicon.glyphicon-user.form-control-feedback 
+          label Alamat 
+          .form-group.has-feedback 
+            input.form-control(type="alamat" name="alamat" id="alamat" autocomplete="off" placeholder="Isi Alamat") 
+            span.glyphicon.glyphicon-map-marker.form-control-feedback 
+          label Email 
+          .form-group.has-feedback 
+            input.form-control(type="email" name="email" id="email" autocomplete="off" placeholder="Isi Email") 
+            span.glyphicon.glyphicon-envelope.form-control-feedback 
+          label Password 
+          .form-group.has-feedback 
+            input.form-control(type="password" name="password" id="password" placeholder="Isi Password" autocomplete="off") 
+            span.glyphicon.glyphicon-lock.form-control-feedback 
+          .form-group.has-feedback 
+          label Jabatan 
+          select.form-control.select2(style="width: 100%;" name="jabatan" id="jabatan" ) 
+           option Programmer 
+           option Implementator 
+           option Santri 
+            
+          .social-auth-links.text-center 
+            button.btn.btn-primary.btn-block.btn-flat(type="submit") Registrasi 
+      // /.login-box-body 
+    // /.login-box
