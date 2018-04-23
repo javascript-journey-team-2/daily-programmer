@@ -1,11 +1,11 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var BahasaPemrograman = sequelize.define('BahasaPemrograman', {
-    name: DataTypes.STRING
-  });
+	var BahasaPemrograman = sequelize.define('BahasaPemrogramans', {
+		name: DataTypes.STRING
+	});
 
-  BahasaPemrograman.associate = function(models) {
-    models.BahasaPemrogramans.hasMany(models.Artikels);
-  };
-  return BahasaPemrograman;
+	BahasaPemrograman.associate = function(models) {
+		models.BahasaPemrogramans.hasMany(models.Artikels);
+	};
+	return BahasaPemrograman;
 };

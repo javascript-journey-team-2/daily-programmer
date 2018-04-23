@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var Artikel = sequelize.define('Artikel', {
+  var Artikel = sequelize.define('Artikels', {
     jenis_bahasan: DataTypes.STRING,
     keterangan: DataTypes.TEXT,
     BahasaPemrogramanId: DataTypes.INTEGER,
