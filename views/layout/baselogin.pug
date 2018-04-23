@@ -1,0 +1,20 @@
+doctype html
+html
+    head
+        include head.pug
+        body.hold-transition.login-page
+                                block content
+
+//- | !-- jQuery 3 --&gt;
+script(src='/adminlte/jquery/dist/jquery.min.js')|
+script(src='/adminlte/bootstrap/dist/js/bootstrap.min.js')|
+script(src='/adminlte/plugins/iCheck/icheck.min.js')|
+script.
+  $(function () {
+  $('input').iCheck({
+  checkboxClass: 'icheckbox_square-blue',
+  radioClass: 'iradio_square-blue',
+  increaseArea: '20%' /* optional */
+  });
+  });
+
