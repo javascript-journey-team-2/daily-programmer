@@ -1,0 +1,29 @@
+//- | !-- jQuery 3 --&gt;
+script(src='/adminlte/jquery/dist/jquery.min.js')
+  //- // jQuery UI 1.11.4
+  script(src='/adminlte/jquery-ui/jquery-ui.min.js')
+    script(src='/adminlte/bootstrap/dist/js/bootstrap.min.js')
+      script(src='/adminlte/plugins/iCheck/icheck.min.js')
+        //- // DataTables
+        script(src='/adminlte/datatables.net/js/jquery.dataTables.min.js')
+          script(src='/adminlte/datatables.net-bs/js/dataTables.bootstrap.min.js')
+            //- // FastClick
+            script(src='/adminlte/dist/js/adminlte.min.js')
+              //- // AdminLTE dashboard demo (This is only for demo purposes)
+              script(src='/adminlte/dist/js/demo.js')
+                //- // Resolve conflict in jQuery UI tooltip with Bootstrap tooltip
+                script.
+                  $.widget.bridge('uibutton', $.ui.button);
+                  // page script
+                  script.
+                    $(function () {
+                    $('#example1').DataTable()
+                    $('#example2').DataTable({
+                    'paging'      : true,
+                    'lengthChange': false,
+                    'searching'   : false,
+                    'ordering'    : true,
+                    'info'        : true,
+                    'autoWidth'   : false
+                    })
+                    })

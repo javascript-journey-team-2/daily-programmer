@@ -1,0 +1,34 @@
+doctype html
+html
+    head
+        include head.pug
+        body.hold-transition.skin-blue.sidebar-mini
+                div.wrapper
+                        include nav.pug
+                        include sidebar.pug
+                        div.content-wrapper
+                                block content
+                                        
+                                        div.control-sidebar-bg
+
+//- | !-- jQuery 3 --&gt;
+script(src='/adminlte/jquery/dist/jquery.min.js')|
+script(src='/adminlte/jquery-ui/jquery-ui.min.js')|
+script(src='/adminlte/bootstrap/dist/js/bootstrap.min.js')|
+script(src='/adminlte/datatables.net/js/jquery.dataTables.min.js')|
+script(src='/adminlte/datatables.net-bs/js/dataTables.bootstrap.min.js')|
+script(src='/adminlte/dist/js/adminlte.min.js')|
+script(src='/adminlte/dist/js/demo.js')|
+script.
+
+      $(function () {
+      $('#example1').DataTable()
+      $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+      })
+      })

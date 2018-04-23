@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "root",
+    "username": "Andaglos",
     "password": null,
-    "database": "database_development",
+    "database": "Andaglos",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
