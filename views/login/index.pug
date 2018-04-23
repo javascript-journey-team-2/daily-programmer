@@ -1,0 +1,27 @@
+extends ../layout/baselogin
+block content
+    .login-box
+      .login-logo
+        a(href='#')
+          b Daily Programming
+      // /.login-logo
+      .login-box-body
+        p.login-box-msg Silakan Login
+        form(action='#' method='post')
+          .form-group.has-feedback
+            input.form-control(type='email' autocomplete='off' placeholder='Email')
+            span.glyphicon.glyphicon-envelope.form-control-feedback
+          .form-group.has-feedback
+            input.form-control(type='password' placeholder='Password' autocomplete='off')
+            span.glyphicon.glyphicon-lock.form-control-feedback
+          .social-auth-links.text-center
+            button.btn.btn-primary.btn-block.btn-flat(type='submit') Sign In
+          a.text-center(href='#') Registrasi Member Baru
+      // /.login-box-body
+    // /.login-box
+
+
+
+
+
+							
