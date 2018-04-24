@@ -4,21 +4,29 @@ block content
       .login-logo 
         a(href='#') 
           b Daily Programming 
-      // /.login-logo 
       .login-box-body 
         p.login-box-msg Silakan Registrasi 
-        form(action='#' method='post') 
+        form(action='/register' method='post')
+          - if (messages.msg_error)
+            .alert.alert-danger.alert-dismissable
+              button.close(type='button', data-dismiss='alert', aria-hidden='true') ×
+              | !{messages.msg_error}
+          - if (messages.msg_info)
+            .alert.alert-success.alert-dismissable
+              button.close(type='button', data-dismiss='alert', aria-hidden='true') ×
+              | #{messages.msg_info}
+
           label Username 
           .form-group.has-feedback 
-            input.form-control(type="text" name="username" id="username" autocomplete="off" placeholder="Isi Username") 
+            input.form-control(type="text" name="username" id="username" autocomplete="off" placeholder="Isi Username" value=username) 
             span.glyphicon.glyphicon-user.form-control-feedback 
           label Nama Depan 
           .form-group.has-feedback 
-            input.form-control(type="text" name="first_name" id="first_name" autocomplete="off" placeholder="Isi Nama Depan") 
+            input.form-control(type="text" name="first_name" id="first_name" autocomplete="off" placeholder="Isi Nama Depan" value=last_name) 
             span.glyphicon.glyphicon-user.form-control-feedback 
           label Nama Balakang 
           .form-group.has-feedback 
-            input.form-control(type="text" name="last_name" id="last_name" autocomplete="off" placeholder="Isi Nama Belakang") 
+            input.form-control(type="text" name="last_name" id="last_name" autocomplete="off" placeholder="Isi Nama Belakang" value=last_name) 
             span.glyphicon.glyphicon-user.form-control-feedback 
           label Alamat 
           .form-group.has-feedback 
@@ -26,11 +34,11 @@ block content
             span.glyphicon.glyphicon-map-marker.form-control-feedback 
           label Email 
           .form-group.has-feedback 
-            input.form-control(type="email" name="email" id="email" autocomplete="off" placeholder="Isi Email") 
+            input.form-control(type="email" name="email" id="email" autocomplete="off" placeholder="Isi Email" value=email) 
             span.glyphicon.glyphicon-envelope.form-control-feedback 
           label Password 
           .form-group.has-feedback 
-            input.form-control(type="password" name="password" id="password" placeholder="Isi Password" autocomplete="off") 
+            input.form-control(type="password" name="password" id="password" placeholder="Isi Password"  autocomplete="off") 
             span.glyphicon.glyphicon-lock.form-control-feedback 
           .form-group.has-feedback 
           label Jabatan 
