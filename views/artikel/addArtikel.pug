@@ -1,0 +1,57 @@
+extends ../layout/base
+block content
+  section.content
+    .row
+      .col-xs-12
+
+        .box
+          .box-header
+            h3.box-title Tambah Artikel
+            br|
+            br|
+
+          .box-body
+            .row
+              .col-sm-10
+
+                form(action='/artikel/add-artikel' method='POST' role='form')
+
+                    - if (messages.msg_error)
+                      .alert.alert-danger.alert-dismissable
+                        button.close(type='button', data-dismiss='alert', aria-hidden='true') ×
+                        | !{messages.msg_error}
+                    - if (messages.msg_info)
+                      .alert.alert-success.alert-dismissable
+                        button.close(type='button', data-dismiss='alert', aria-hidden='true') ×
+                        | #{messages.msg_info}
+
+
+                    .form-group
+                      label Tema
+                      input.form-control(type='text' placeholder='Tema atau Jenis Bahasan Artikel. contoh: Penggunaan Sequelize di Express Js' name='jenis_bahasan' autocomplete='off' value=jenis_bahasan)
+                    
+
+                    .form-group
+                      label Bahasa Pemrograman
+                      select.form-control(type='text' name='bahasa_pemrograman')
+                        option(value='') Silakan Pilih
+                        for bahasaPemrogramans, index in data
+                          option(value=bahasaPemrogramans.id)  #{bahasaPemrogramans.name}
+                                 
+                 
+                    .form-group
+                      label Sumber Artikel
+                      input.form-control(type='text' placeholder='Masukan Url Artikel' name='sumber_artikel' autocomplete='off' value=sumber_artikel)
+
+
+                    .form-group
+                      label Keterangan
+                      textarea.form-control(rows='3' placeholder='Masukan Keterangan ...' name='keterangan' value='keterangan')
+
+              
+                    button(type='submit').btn.btn-primary Submit
+                 
+    
+
+
+
