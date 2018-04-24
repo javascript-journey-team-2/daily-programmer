@@ -5,20 +5,32 @@ block content
         a(href='#')
           b Daily Programming
       // /.login-logo
+          - if (messages.info)
+            .alert.alert-danger.alert-dismissable
+              button.close(type='button', data-dismiss='alert', aria-hidden='true') ×
+              | #{messages.info}
+
       .login-box-body
         p.login-box-msg Silakan Login
-        form(action='#' method='post')
-          .form-group.has-feedback
-            input.form-control(type='email' autocomplete='off' placeholder='Email')
-            span.glyphicon.glyphicon-envelope.form-control-feedback
-          .form-group.has-feedback
-            input.form-control(type='password' placeholder='Password' autocomplete='off')
-            span.glyphicon.glyphicon-lock.form-control-feedback
-          .social-auth-links.text-center
-            button.btn.btn-primary.btn-block.btn-flat(type='submit') Sign In
-          a.text-center(href='#') Registrasi Member Baru
-      // /.login-box-body
-    // /.login-box
+        form(action='/login' method='post')
+
+            - if (messages.info)
+              .alert.alert-danger.alert-dismissable
+                button.close(type='button', data-dismiss='alert', aria-hidden='true') ×
+                | #{messages.info}
+
+
+            .form-group.has-feedback
+              input.form-control(type='text' autocomplete='off' placeholder='Username' name='username')
+              span.glyphicon.glyphicon-user.form-control-feedback
+            .form-group.has-feedback
+              input.form-control(type='password' placeholder='Password' autocomplete='off' name='password')
+              span.glyphicon.glyphicon-lock.form-control-feedback
+              .social-auth-links.text-center
+              button.btn.btn-primary.btn-block.btn-flat(type='submit') Login
+            a.text-center(href='/register') Registrasi Member Baru
+      
+   
 
 
 
