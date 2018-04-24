@@ -1,0 +1,36 @@
+extends ../layout/base
+block content
+  section.content
+    .row
+      .col-xs-12
+
+        .box
+          .box-header
+            h3.box-title Edit User
+            br|
+            br|
+
+          .box-body
+            .row
+              .col-sm-6
+
+                form(action='/bahasapemrograman/edit-bp/'+bps.id, method='POST' role='form')
+
+                    - if (messages.msg_error)
+                      .alert.alert-danger.alert-dismissable
+                        button.close(type='button', data-dismiss='alert', aria-hidden='true') ×
+                        | !{messages.msg_error}
+                    - if (messages.msg_info)
+                      .alert.alert-success.alert-dismissable
+                        button.close(type='button', data-dismiss='alert', aria-hidden='true') ×
+                        | #{messages.msg_info}
+
+
+                    .form-group
+                      label Bahasa Pemrograman
+                      input.form-control(type='text' placeholder='Bahasa Pemrograman' name='name' autocomplete='off' value=bps.name)
+
+                    button(type='submit').btn.btn-primary Submit
+                 
+                 
+    

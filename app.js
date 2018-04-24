@@ -14,7 +14,7 @@ var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
 var homeRouter = require('./routes/home');
-
+var bahasaPemrogramanRouter = require('./routes/bahasapemrograman');
 var app = express();
 
 // view engine setup
@@ -45,6 +45,7 @@ app.use('/user', usersRouter);
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/home', homeRouter);
+app.use('/bahasapemrograman',bahasaPemrogramanRouter);
 
 const port = process.env.PORT || 4000;
 
