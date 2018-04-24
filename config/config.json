@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "Andaglos",
+    "username": "andaglos",
     "password": null,
-    "database": "Andaglos",
+    "database": "dailys",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
