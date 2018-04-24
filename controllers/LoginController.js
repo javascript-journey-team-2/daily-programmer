@@ -1,4 +1,3 @@
-var express = require('express');
 var models  = require('../models');
 var crypto = require('crypto');
 var secret = 'andaglos';
