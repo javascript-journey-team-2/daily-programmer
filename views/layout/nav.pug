@@ -14,13 +14,13 @@ header.main-header
         li.dropdown.user.user-menu
           a.dropdown-toggle(href='#' data-toggle='dropdown')
             img.user-image(src='adminlte/dist/img/avatar04.png' alt='User Image')
-            span.hidden-xs Alexander Pierce
+            span.hidden-xs #{session_store.username}
           ul.dropdown-menu
             li.user-header
               img.img-circle(src='adminlte/dist/img/avatar04.png' alt='User Image')
               p
-                | Alexander Pierce - Web Developer
-                small Member since Nov. 2012
+                | #{session_store.username} - #{session_store.jabatan}
+                ////small Member since Nov. 2012
             li.user-body
                       
             li.user-footer

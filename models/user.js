@@ -8,6 +8,21 @@ module.exports = function(sequelize, DataTypes) {
     email: DataTypes.STRING,
     alamat: DataTypes.STRING,
     jabatan: DataTypes.STRING
+  },{
+    getterMethods: {
+      fullName() {
+        return this.firstname + ' ' + this.lastname
+      }
+    },
+
+    setterMethods: {
+      fullName(value) {
+        const names = value.split(' ');
+
+        this.setDataValue('firstname', names.slice(0, -1).join(' '));
+        this.setDataValue('lastname', names.slice(-1).join(' '));
+      },
+    }
   });
 
   User.associate = function(models) {
