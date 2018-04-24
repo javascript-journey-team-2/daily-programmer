@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
   },{
     getterMethods: {
       fullName() {
-        return this.firstname + ' ' + this.lastname
+        return this.first_name + ' ' + this.last_name
       }
     },
 
@@ -19,8 +19,8 @@ module.exports = function(sequelize, DataTypes) {
       fullName(value) {
         const names = value.split(' ');
 
-        this.setDataValue('firstname', names.slice(0, -1).join(' '));
-        this.setDataValue('lastname', names.slice(-1).join(' '));
+        this.setDataValue('first_name', names.slice(0, -1).join(' '));
+        this.setDataValue('last_name', names.slice(-1).join(' '));
       },
     }
   });

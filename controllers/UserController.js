@@ -1,4 +1,6 @@
 var models  = require('../models');
+var crypto = require('crypto');
+var secret = 'andaglos';
 var session_store;
 
 exports.index = function(req, res) {
@@ -32,7 +34,7 @@ exports.prosesaddUser = function(req, res){
 	req.assert('username', 'Username harus diisi').notEmpty();
 	req.assert('nama_depan', 'Nama depan harus diisi').notEmpty();
 	req.assert('nama_belakang', 'Nama belakang harus diisi').notEmpty();
-	req.assert('email', 'E-mail harus diisi').notEmpty().withMessage('E-mail diperlukan').isEmail();
+	req.assert('email', 'E-mail harus diisi').notEmpty().withMessage('E-mail harus diisi').isEmail();
 	req.assert('alamat', 'Alamat harus diisi').notEmpty();
 	req.assert('jabatan', 'Jabatan harus diisi').notEmpty();
 
@@ -53,15 +55,25 @@ exports.prosesaddUser = function(req, res){
 
 		models.Users.findOne({ 
 			where: {
-				[Op.or]: [
-				{ username: req.param('username') },
-				{ email: req.param('email') }
+				$or: [
+				{
+					username: 
+					{
+						$eq: req.param('username') 
+					}
+				},
+				{ 
+					email: 
+					{
+						$eq: req.param('email') 
+					}
+				}
 				]
 			}
 		}).then(users => {
 
 			console.log(users);
-			if (users != null) {
+			if (users == null) {
 
 				models.Users.create({ 
 					username: v_username,
@@ -93,7 +105,7 @@ exports.prosesaddUser = function(req, res){
 
 	}else{
         // menampilkan pesan error
-        errors_detail = "<p>Maaf, sepertinya ada salah pengisian, mohon check lagi formnyah!</p><ul>";
+        errors_detail = "<p>Maaf, sepertinya ada salah pengisian, mohon check lagi form usernya!</p><ul>";
 
         for (i in errors)
         {
