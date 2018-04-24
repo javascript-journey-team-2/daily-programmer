@@ -34,6 +34,8 @@ block content
                   th Email
                   th Alamat
                   th Jabatan
+                  th Edit
+                  th Hapus
               tbody
                 for users, index in data
                   tr
@@ -42,6 +44,10 @@ block content
                     td #{users.email}
                     td #{users.alamat}
                     td #{users.jabatan}
+                    td 
+                        a.btn-sm.btn-warning(href='/user/edit-user/'+users.id) Edit
+                    td 
+                        a.btn-sm.btn-danger(href='/user/delete-user/'+users.id) Hapus
 
 
             script.
