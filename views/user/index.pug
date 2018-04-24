@@ -29,6 +29,7 @@ block content
             table#example1.table.table-bordered.table-striped
               thead
                 tr
+                  th Nama
                   th Username
                   th Email
                   th Alamat
@@ -36,6 +37,7 @@ block content
               tbody
                 for users, index in data
                   tr
+                    td #{users.fullName}
                     td #{users.username}
                     td #{users.email}
                     td #{users.alamat}
