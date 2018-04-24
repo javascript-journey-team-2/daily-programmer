@@ -1,0 +1,62 @@
+extends ../layout/base
+block content
+  section.content
+    .row
+      .col-xs-12
+
+        .box
+          .box-header
+            h3.box-title Tambah User
+            br|
+            br|
+
+          .box-body
+            .row
+              .col-sm-6
+                form(action='/user/add-user' method='POST' role='form')
+
+                - if (messages.msg_error)
+                  .alert.alert-danger.alert-dismissable
+                    button.close(type='button', data-dismiss='alert', aria-hidden='true') ×
+                    | !{messages.msg_error}
+                - if (messages.msg_info)
+                  .alert.alert-success.alert-dismissable
+                    button.close(type='button', data-dismiss='alert', aria-hidden='true') ×
+                    | #{messages.msg_info}
+
+
+                .form-group
+                  label Username
+                  input.form-control(type='text' placeholder='Username' name='username' autocomplete='off' value='username')
+
+                .form-group
+                  label Nama Depan
+                  input.form-control(type='text' placeholder='Nama Depan' name='nama_depan' autocomplete='off' value='nama_depan')
+
+
+                .form-group
+                  label Nama Belakang
+                  input.form-control(type='text' placeholder='Nama Belakang' name='nama_belakang' autocomplete='off' value='nama_belakang')
+
+                .form-group
+                  label Email
+                  input.form-control(type='email' placeholder='Email' name='email' autocomplete='off' value='email')
+
+
+                .form-group
+                  label Alamat
+                  input.form-control(type='text' placeholder='Alamat' name='alamat' autocomplete='off' value='alamat')
+             
+                .form-group
+                  label Jabatan
+                  select.form-control
+                    option Full Stack Developer
+                    option Backend Developer
+                    option Frontend Developer
+                    option Mobile Developer
+                    
+
+          .box-footer
+            button.btn.btn-primary(type='submit') Submit
+                 
+    
