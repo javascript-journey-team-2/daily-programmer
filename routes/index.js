@@ -1,19 +1,9 @@
 var express = require('express');
 var router = express.Router();
+var login_controller = require('../controllers/LoginController');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-	res.render('login/index', { title: 'Express' });
-});
+router.get('/', login_controller.index); 
 
-/* GET home page. */
-router.get('/home', function(req, res, next) {
-	res.render('home/home', { title: 'Express' });
-});
-
-/* GET home page. */
-router.get('/register', function(req, res, next) {
-	res.render('register/index', { title: 'Express' });
-});
+router.get('/logout', login_controller.logout); 
 
 module.exports = router;

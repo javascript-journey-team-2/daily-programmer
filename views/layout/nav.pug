@@ -1,5 +1,5 @@
 header.main-header
-  a.logo(href='index2.html')
+  a.logo(href='/home')
     span.logo-mini
       b DP
 
@@ -13,19 +13,19 @@ header.main-header
       ul.nav.navbar-nav
         li.dropdown.user.user-menu
           a.dropdown-toggle(href='#' data-toggle='dropdown')
-            img.user-image(src='adminlte/dist/img/avatar04.png' alt='User Image')
-            span.hidden-xs Alexander Pierce
+            img.user-image(src='/adminlte/dist/img/avatar04.png' alt='User Image')
+            span.hidden-xs #{session_store.username}
           ul.dropdown-menu
             li.user-header
-              img.img-circle(src='adminlte/dist/img/avatar04.png' alt='User Image')
+              img.img-circle(src='/adminlte/dist/img/avatar04.png' alt='User Image')
               p
-                | Alexander Pierce - Web Developer
-                small Member since Nov. 2012
+                | #{session_store.username} - #{session_store.jabatan}
+                ////small Member since Nov. 2012
             li.user-body
                       
             li.user-footer
              
             
               .pull-right
-                a.btn.btn-default.btn-flat(href='#') Sign out
+                a.btn.btn-default.btn-flat(href='/logout') Logout
 

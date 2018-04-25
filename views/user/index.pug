@@ -1,0 +1,57 @@
+extends ../layout/base
+block content
+  section.content
+    .row
+      .col-xs-12
+
+        - if (messages.msg_error)
+          .alert.alert-danger.alert-dismissable
+            button.close(type='button', data-dismiss='alert', aria-hidden='true') ×
+            | #{messages.msg_error}
+        - if (messages.msg_info)
+          .alert.alert-success.alert-dismissable
+            button.close(type='button', data-dismiss='alert', aria-hidden='true') ×
+            | #{messages.msg_info}
+
+        .box
+          .box-header
+            h3.box-title User
+            br|
+            br|
+            .row
+              .col-sm-1
+
+                a(href="/user/add-user").btn.btn-primary.btn-block.btn-flat.pull-left Tambah
+                br|
+                br|
+
+          .box-body
+            table#example1.table.table-bordered.table-striped
+              thead
+                tr
+                  th Nama Lengkap
+                  th Username
+                  th Email
+                  th Alamat
+                  th Jabatan
+                  th Edit
+                  th Hapus
+              tbody
+                for users, index in data
+                  tr
+                    td #{users.fullName}
+                    td #{users.username}
+                    td #{users.email}
+                    td #{users.alamat}
+                    td #{users.jabatan}
+                    td 
+                        a.btn-sm.btn-warning(href='/user/edit-user/'+users.id) Edit
+                    td 
+                        a.btn-sm.btn-danger(href='/user/delete-user/'+users.id) Hapus
+
+
+            script.
+               include ../datatable/index.js
+
+
+

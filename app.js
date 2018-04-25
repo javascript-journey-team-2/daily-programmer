@@ -13,6 +13,9 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
+var homeRouter = require('./routes/home');
+var artikelRouter = require('./routes/artikel');
+var bahasaPemrogramanRouter = require('./routes/bahasapemrograman');
 
 var app = express();
 
@@ -40,9 +43,12 @@ app.use(methodOverride(function(req, res){
 }));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/user', usersRouter);
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
+app.use('/home', homeRouter);
+app.use('/artikel', artikelRouter);
+app.use('/bahasapemrograman',bahasaPemrogramanRouter);
 
 const port = process.env.PORT || 4000;
 
