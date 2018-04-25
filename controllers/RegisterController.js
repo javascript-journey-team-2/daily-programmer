@@ -1,5 +1,7 @@
 var models  = require('../models/');
 var crypto = require('crypto');
+var dateFormat = require('dateformat');
+var now = new Date();
 var secret = 'andaglos'; 
 var session_store;
 
@@ -19,7 +21,7 @@ exports.store = function(req, res) {
     req.assert('first_name', 'Nama depan harus terdiri dari angka dan huruf').isAlpha();
     req.assert('last_name', 'Nama belakang harus terdiri dari angka dan huruf').isAlpha();
     //validasi
-	var errors = req.validationErrors();  
+    var errors = req.validationErrors();  
     console.log(errors);
 
     if (!errors)
@@ -31,38 +33,40 @@ exports.store = function(req, res) {
 
         models.Users.findOne({ where: { username: req.param('username') } }).then(regist => { 
             if (regist == null) { 				
-               		models.Users.create({ 
-						username: req.param('username'),
-						first_name: req.param('first_name'),
-						last_name: req.param('last_name'),
-						password: passwordEncripsi,
-						email: req.param('email'),
-						alamat: req.param('alamat'),
-						jabatan: req.param('jabatan'),
-					}).then(function (registerr) {
-						console.log(registerr);	
-						session_store.id = registerr.dataValues.id;
-						session_store.username = registerr.dataValues.username;
-						session_store.email = registerr.dataValues.email;
-						session_store.first_name = registerr.dataValues.first_name;
-						session_store.last_name = registerr.dataValues.last_name;
-						session_store.jabatan = registerr.dataValues.jabatan;
-						session_store.logged_in = true;
+             models.Users.create({ 
+              username: req.param('username'),
+              first_name: req.param('first_name'),
+              last_name: req.param('last_name'),
+              password: passwordEncripsi,
+              email: req.param('email'),
+              alamat: req.param('alamat'),
+              jabatan: req.param('jabatan'),
+          }).then(function (registerr) {
+              console.log(registerr);	
+              session_store.id = registerr.dataValues.id;
+              session_store.username = registerr.dataValues.username;
+              session_store.email = registerr.dataValues.email;
+              session_store.first_name = registerr.dataValues.first_name;
+              session_store.last_name = registerr.dataValues.last_name;
+              session_store.jabatan = registerr.dataValues.jabatan;
+              session_store.fullName = registerr.dataValues.first_name + " " + registerr.dataValues.last_name
+              session_store.since_member = dateFormat(registerr.dataValues.createdAt, "mmmm yyyy");
+              session_store.logged_in = true;
 
-						console.log(session_store);
-						res.redirect('/home');       
-					});
-            }
-            else{
-	                req.flash('msg_error', 'Maaf, username sudah digunakan...');
-	                res.render('register', {
-			            username: req.param('username'),
-			            email: req.param('email'),
-			            first_name: req.param('first_name'),
-			            last_name: req.param('last_name'),
-			        });
-            }
-        });
+              console.log(session_store);
+              res.redirect('/home');       
+          });
+      }
+      else{
+         req.flash('msg_error', 'Maaf, username sudah digunakan...');
+         res.render('register', {
+           username: req.param('username'),
+           email: req.param('email'),
+           first_name: req.param('first_name'),
+           last_name: req.param('last_name'),
+       });
+     }
+ });
     }
     else
     {   

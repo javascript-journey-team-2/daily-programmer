@@ -1,5 +1,7 @@
 var models  = require('../models');
 var crypto = require('crypto');
+var dateFormat = require('dateformat');
+var now = new Date();
 var secret = 'andaglos';
 var session_store;
 
@@ -30,9 +32,12 @@ exports.login = function(req, res) {
 				session_store.first_name = users.dataValues.first_name;
 				session_store.last_name = users.dataValues.last_name;
 				session_store.jabatan = users.dataValues.jabatan;
+				session_store.fullName = users.dataValues.first_name + " " + users.dataValues.last_name;
+				session_store.since_member = dateFormat(users.dataValues.createdAt, "mmmm yyyy");
 				session_store.logged_in = true;
 
 				console.log(session_store);
+				console.log(dateFormat(users.dataValues.createdAt, "mmmm yyyy"))
 				res.redirect('/home');
 
 			}else{
