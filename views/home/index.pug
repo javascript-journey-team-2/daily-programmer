@@ -2,53 +2,39 @@ extends ../layout/base
 block content
       section.content
           .row
-            .col-lg-3.col-xs-6
+            .col-lg-4.col-xs-4
 
               .small-box.bg-aqua
                 .inner
-                  h3 150
-                  p New Orders
+                  h3 #{countbp}
+                  p Bahasa Pemrograman
                 .icon
-                  i.ion.ion-bag
-                a.small-box-footer(href='#')
+                  i.ion.ion-code
+                a.small-box-footer(href='bahasapemrograman')
                   | More info 
                   i.fa.fa-arrow-circle-right
 
-            .col-lg-3.col-xs-6
-
-              .small-box.bg-green
-                .inner
-                  h3
-                    | 53
-                    sup(style='font-size: 20px') %
-                  p Bounce Rate
-                .icon
-                  i.ion.ion-stats-bars
-                a.small-box-footer(href='#')
-                  | More info 
-                  i.fa.fa-arrow-circle-right
-
-            .col-lg-3.col-xs-6
+            .col-lg-4.col-xs-4
 
               .small-box.bg-yellow
                 .inner
-                  h3 44
+                  h3 #{countuser}
                   p User Registrations
                 .icon
                   i.ion.ion-person-add
-                a.small-box-footer(href='#')
+                a.small-box-footer(href='user')
                   | More info 
                   i.fa.fa-arrow-circle-right
 
-            .col-lg-3.col-xs-6
+            .col-lg-4.col-xs-4
 
               .small-box.bg-red
                 .inner
-                  h3 65
-                  p Unique Visitors
+                  h3 #{countartikel}
+                  p Artikel
                 .icon
-                  i.ion.ion-pie-graph
-                a.small-box-footer(href='#')
+                  i.ion.ion-edit
+                a.small-box-footer(href='artikel')
                   | More info 
                   i.fa.fa-arrow-circle-right
 
