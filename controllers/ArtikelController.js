@@ -50,7 +50,7 @@ exports.prosesAddArtikel = function (req, res){
 			keterangan: v_keterangan,
 			UserId: session_store.idUser
 		}).then(function(){
-			console.log(session_store);
+			
 			res.redirect('/artikel');
 		});
 
