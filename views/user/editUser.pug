@@ -1,0 +1,67 @@
+extends ../layout/base
+block content
+  section.content
+    .row
+      .col-xs-12
+
+        .box
+          .box-header
+            h3.box-title Edit User
+            br|
+            br|
+
+          .box-body
+            .row
+              .col-sm-6
+
+                form(action='/user/edit-user/'+user.id, method='POST' role='form')
+
+                    - if (messages.msg_error)
+                      .alert.alert-danger.alert-dismissable
+                        button.close(type='button', data-dismiss='alert', aria-hidden='true') ×
+                        | !{messages.msg_error}
+                    - if (messages.msg_info)
+                      .alert.alert-success.alert-dismissable
+                        button.close(type='button', data-dismiss='alert', aria-hidden='true') ×
+                        | #{messages.msg_info}
+
+
+                    .form-group
+                      label Username
+                      input.form-control(type='text' placeholder='Username' name='username' autocomplete='off' value=user.username)
+
+
+                    .form-group
+                      label Nama Depan
+                      input.form-control(type='text' placeholder='Nama Depan' name='nama_depan' autocomplete='off' value=user.first_name)
+
+
+                    .form-group
+                      label Nama Belakang
+                      input.form-control(type='text' placeholder='Nama Belakang' name='nama_belakang' autocomplete='off' value=user.last_name)
+
+                    .form-group
+                      label Email
+                      input.form-control(type='email' placeholder='Email' name='email' autocomplete='off' value=user.email)
+
+
+                    .form-group
+                      label Alamat
+                      input.form-control(type='text' placeholder='Alamat' name='alamat' autocomplete='off' value=user.alamat)
+                 
+                    .form-group
+                      label Jabatan
+                      select.form-control(type='text' name='jabatan')
+                        option(value=user.jabatan,selected) #{user.jabatan}
+                        option(value='Full Stack Developer') Full Stack Developer
+                        option(value='Backend Developer') Backend Developer
+                        option(value='Frontend Developer') Frontend Developer
+                        option(value='Mobile Developer') Mobile Developer
+                        
+
+              
+                    button(type='submit').btn.btn-primary Submit
+                 
+    
+
+

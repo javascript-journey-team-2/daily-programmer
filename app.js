@@ -15,6 +15,7 @@ var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
 var homeRouter = require('./routes/home');
 var artikelRouter = require('./routes/artikel');
+var bahasaPemrogramanRouter = require('./routes/bahasapemrograman');
 
 var app = express();
 
@@ -47,6 +48,7 @@ app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/home', homeRouter);
 app.use('/artikel', artikelRouter);
+app.use('/bahasapemrograman',bahasaPemrogramanRouter);
 
 const port = process.env.PORT || 4000;
 
