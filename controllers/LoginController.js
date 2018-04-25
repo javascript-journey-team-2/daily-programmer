@@ -24,7 +24,7 @@ exports.login = function(req, res) {
 			console.log(users);
 			if (users != null) {
 
-				session_store.id = users.dataValues.id;
+				session_store.idUser = users.dataValues.id;
 				session_store.username = users.dataValues.username;
 				session_store.email = users.dataValues.email;
 				session_store.first_name = users.dataValues.first_name;
