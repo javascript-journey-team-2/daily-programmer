@@ -22,7 +22,7 @@ block content
             span.glyphicon.glyphicon-user.form-control-feedback 
           label Nama Depan 
           .form-group.has-feedback 
-            input.form-control(type="text" name="first_name" id="first_name" autocomplete="off" placeholder="Isi Nama Depan" value=last_name) 
+            input.form-control(type="text" name="first_name" id="first_name" autocomplete="off" placeholder="Isi Nama Depan" value=first_name) 
             span.glyphicon.glyphicon-user.form-control-feedback 
           label Nama Balakang 
           .form-group.has-feedback 
@@ -30,7 +30,7 @@ block content
             span.glyphicon.glyphicon-user.form-control-feedback 
           label Alamat 
           .form-group.has-feedback 
-            input.form-control(type="alamat" name="alamat" id="alamat" autocomplete="off" placeholder="Isi Alamat") 
+            input.form-control(type="alamat" name="alamat" id="alamat" autocomplete="off" placeholder="Isi Alamat" value=alamat) 
             span.glyphicon.glyphicon-map-marker.form-control-feedback 
           label Email 
           .form-group.has-feedback 
@@ -38,15 +38,15 @@ block content
             span.glyphicon.glyphicon-envelope.form-control-feedback 
           label Password 
           .form-group.has-feedback 
-            input.form-control(type="password" name="password" id="password" placeholder="Isi Password"  autocomplete="off") 
+            input.form-control(type="password" name="password" id="password" placeholder="Isi Password" value=password autocomplete="off") 
             span.glyphicon.glyphicon-lock.form-control-feedback 
           .form-group.has-feedback 
           label Jabatan 
           select.form-control.select2(style="width: 100%;" name="jabatan" id="jabatan" ) 
-            option Full Stack Developer
-            option Backend Developer
-            option Frontend Developer
-            option Mobile Developer
+            option(value='Full Stack Developer') Full Stack Developer
+            option(value='Backend Developer') Backend Developer
+            option(value='Frontend Developer') Frontend Developer
+            option(value='Mobile Developer') Mobile Developer
             
           .social-auth-links.text-center 
             button.btn.btn-primary.btn-block.btn-flat(type="submit") Registrasi 
