@@ -1,7 +1,7 @@
 extends ../layout/base
 block content
-  section.content
-    .row
+    section.content
+     .row
       .col-xs-12
 
         - if (messages.msg_error)
@@ -50,8 +50,6 @@ block content
                         a.btn-sm.btn-danger(href='/user/delete-user/'+users.id) Hapus
 
 
-            script.
-               include ../datatable/index.js
-
-
-
+block prepend footer
+  script
+   include ../datatable/index.js

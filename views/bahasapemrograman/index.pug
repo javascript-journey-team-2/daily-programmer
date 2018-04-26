@@ -42,8 +42,9 @@ block content
                         a.btn-sm.btn-danger(href='/bahasapemrograman/delete-bp/'+bp.id) Hapus
 
 
-            script.
-               include ../datatable/index.js
+block prepend footer
+  script
+    include ../datatable/index.js
 
 
 

@@ -50,7 +50,7 @@ exports.prosesAddArtikel = function (req, res){
 			keterangan: v_keterangan,
 			UserId: session_store.idUser
 		}).then(function(){
-			
+			req.flash('msg_info', 'Artikel berhasil ditambahkan...');
 			res.redirect('/artikel');
 		});
 

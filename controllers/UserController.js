@@ -84,6 +84,7 @@ exports.prosesaddUser = function(req, res){
 					alamat: v_alamat,
 					jabatan: v_jabatan
 				}).then(function(){
+					req.flash('msg_info', 'User '+v_username+' berhasil ditambahkan...');
 					res.redirect('/user');
 				});
 
@@ -129,17 +130,17 @@ exports.prosesaddUser = function(req, res){
 };
 
 exports.editUser = function(req, res){
- 	session_store = req.session;
+	session_store = req.session;
 	models.Users.findOne({ where: {id:req.params.id}}).then(users => {
+		console.log(users);
+		if (users != null) {
 			console.log(users);
-			if (users != null) {
-				 console.log(users);
-            	 res.render('user/editUser', { session_store:session_store, user: users.dataValues });
-			}else{
-				req.flash('msg_error', 'Maaf, User tidak tiketahui...');
-				res.redirect('/user');
-			}
-		});
+			res.render('user/editUser', { session_store:session_store, user: users.dataValues });
+		}else{
+			req.flash('msg_error', 'Maaf, User tidak tiketahui...');
+			res.redirect('/user');
+		}
+	});
 };
 
 exports.UpdateUser = function(req, res){
@@ -167,9 +168,9 @@ exports.UpdateUser = function(req, res){
 		models.Users.findOne({ 
 			where: {
 				id: 
-					{
-						$ne: req.params.id 
-					},
+				{
+					$ne: req.params.id 
+				},
 				$or: [
 				{
 					username: 
@@ -222,24 +223,24 @@ exports.UpdateUser = function(req, res){
         errors_detail += "</ul>";
 
         req.flash('msg_error', errors_detail);
-		res.redirect('/user');
+        res.redirect('/user');
     }
 };
 
 exports.DeleteUser = function(req,res){
 	models.Users.findOne({ 
-			where: {
-					id:req.params.id 
-					}
-		}).then(users => {
-			console.log(users);
-			if (users != null) {
-				 models.Users.destroy({where: {id: req.params.id}});
-				 req.flash('msg_info', 'User berhasil dihapus...');
-				 res.redirect('/user');
-			}else{
-				req.flash('msg_error', 'Maaf, User Tidak diketahui...');
-				res.redirect('/user');
-			}
-		});
+		where: {
+			id:req.params.id 
+		}
+	}).then(users => {
+		console.log(users);
+		if (users != null) {
+			models.Users.destroy({where: {id: req.params.id}});
+			req.flash('msg_info', 'User berhasil dihapus...');
+			res.redirect('/user');
+		}else{
+			req.flash('msg_error', 'Maaf, User Tidak diketahui...');
+			res.redirect('/user');
+		}
+	});
 };
