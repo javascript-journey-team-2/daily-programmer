@@ -3,11 +3,37 @@ var crypto = require('crypto');
 var secret = 'andaglos';
 var session_store;
 
+
 exports.index = function(req, res) {
 	session_store = req.session;
 	res.render('artikel/index', {
 		session_store:session_store
 	});
+};
+
+exports.getData = function(req,res){
+
+	models.Artikels.findAndCountAll({ 
+		include: [{
+			model: models.Users,
+			required: true,
+			attributes: ['first_name','last_name', 'jabatan']
+		},{
+			model: models.BahasaPemrogramans,
+			required: true,
+			attributes: ['name']
+		}],
+		offset: req.param("jumlah"),
+		limit: 3,
+		order: [ [ 'id', 'desc' ] ]
+	}).then(artikels => {
+		console.log(artikels.count);
+		console.log(artikels.rows);
+
+		console.log(JSON.stringify(artikels));
+		res.send({artikel : artikels});
+	});
+
 };
 
 exports.addArtikel = function(req, res) {	

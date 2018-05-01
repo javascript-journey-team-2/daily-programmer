@@ -68,7 +68,7 @@ module.exports = function(sequelize, DataTypes) {
 
     console.log(JSON.stringify(artikels))
     slack.webhook({
-      text: `${artikels.User.fullName} Menambahkan sebuah artikel ${artikels.BahasaPemrograman.name} mengenai ${artikels.jenis_bahasan} , silakan cek diisi ${artikels.sumber_artikel}`
+      text: `${artikels.User.fullName} Menambahkan sebuah artikel ${artikels.BahasaPemrograman.name} mengenai ${artikels.jenis_bahasan} , silakan cek disini ${artikels.sumber_artikel}`
     }, function(err, response) {
       console.log(response);
     });
