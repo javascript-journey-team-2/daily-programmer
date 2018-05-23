@@ -16,6 +16,18 @@ $(function () {
 		});
 	};
 
+	function searchData(jumlahRequestData,search){
+		$.ajax({
+			url : '/artikel/search',
+			contentType : 'application/json',
+			data : { jumlah : jumlahRequestData, search : search},
+			success : function (response){
+				console.log(response);
+				// loadData(response.artikel.rows,jumlahRequestData,response.artikel.count)
+			}
+		});
+	};
+
 	function loadData(data,jumlahRequestData,jumlahData){
 
 		if (jumlahRequestData == 0) {
@@ -93,6 +105,12 @@ $(function () {
 			muatData(jumlahRequestData);
 		}
 
+	});
+
+	$(document).on('keyup','#cariArtikel', function(){
+		let search =  $(this).val();
+		searchData(3,search)
+		console.log(search);
 	});
 
 });

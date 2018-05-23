@@ -5,7 +5,9 @@ var Auth_mdw = require('../middlewares/auth');
 
 router.get('/', Auth_mdw.check_login, artikel_controller.index); 
 
-router.get('/data',Auth_mdw.check_login, artikel_controller.getData);
+router.get('/data',artikel_controller.getData);
+
+router.get('/search',Auth_mdw.check_login, artikel_controller.searchData);
 
 router.get('/add-artikel',Auth_mdw.check_login, artikel_controller.addArtikel); 
 

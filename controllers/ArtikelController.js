@@ -3,7 +3,6 @@ var crypto = require('crypto');
 var secret = 'andaglos';
 var session_store;
 
-
 exports.index = function(req, res) {
 	session_store = req.session;
 	res.render('artikel/index', {
@@ -36,6 +35,58 @@ exports.getData = function(req,res){
 
 };
 
+exports.searchData = function(req,res){
+
+	models.Artikels.findAndCountAll({ 
+		include: [{
+			model: models.Users,
+			required: true,
+			attributes: ['first_name','last_name', 'jabatan']
+		},{
+			model: models.BahasaPemrogramans,
+			required: true,
+			attributes: ['name']
+		}],
+		where: {
+			$or: [
+			{
+				jenis_bahasan: 
+				{
+					like: "%"+req.param('search')+"%" 
+				}
+			},
+			{
+				jenis_bahasan: 
+				{
+					like: req.param('search')+"%" 
+				}
+			},
+			{ 
+				keterangan: 
+				{
+					like: req.param('search')+"%" 
+				}
+			},
+			{ 
+				keterangan: 
+				{
+					like: "%"+req.param('search')+"%" 
+				}
+			}
+			]
+		},
+		offset: req.param("jumlah"),
+		limit: 3,
+		order: [ [ 'id', 'desc' ] ]
+	}).then(artikels => {
+		console.log(artikels.count);
+		console.log(artikels.rows);
+
+		console.log(JSON.stringify(artikels));
+		res.send({artikel : artikels});
+	});
+
+};
 exports.addArtikel = function(req, res) {	
 	session_store = req.session;
 

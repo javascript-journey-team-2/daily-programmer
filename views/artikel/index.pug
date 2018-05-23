@@ -3,14 +3,22 @@ block content
   section.content-header
         h1
             | Artikel
-        br
-        a(href="/artikel/add-artikel").btn.btn-primary.btn-block.btn-lg.pull-left Tambah Artikel
-        br
-        br
+    
   section.content
     .row
-      .col-xs-12
+      .col-md-3
 
+        a(href="/artikel/add-artikel").btn.btn-primary.btn-block.btn-lg.pull-left Tambah Artikel
+
+      .col-md-3
+      .col-md-3
+      .col-md-3
+        .input-group
+          span.input-group-addon
+            i.fa.fa-search
+          input#cariArtikel.form-control.input-lg.pull-right(type='text' placeholder='Cari artikel...')
+        br
+      .col-xs-12
         - if (messages.msg_error)
           .alert.alert-danger.alert-dismissable
             button.close(type='button', data-dismiss='alert', aria-hidden='true') ×
